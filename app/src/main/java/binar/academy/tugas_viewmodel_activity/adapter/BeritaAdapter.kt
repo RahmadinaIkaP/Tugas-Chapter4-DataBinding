@@ -1,8 +1,11 @@
 package binar.academy.tugas_viewmodel_activity.adapter
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import binar.academy.tugas_viewmodel_activity.DetailBeritaActivity
 import binar.academy.tugas_viewmodel_activity.databinding.ItemBeritaBinding
 import binar.academy.tugas_viewmodel_activity.model.Berita
 
@@ -13,14 +16,10 @@ class BeritaAdapter(private var listBerita : ArrayList<Berita>) :
 
     inner class BeritaViewHolder(private val binding : ItemBeritaBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(berita: Berita){
-            binding.run {
-                tvJudulBerita.text = berita.judul
-                tvJurnalis.text = berita.namaJurnalis
-                tvTanggalPublish.text = berita.tanggalPublish
-                ivBerita.setImageResource(berita.imgBerita)
-                itemView.setOnClickListener {
-                    onClick?.invoke(berita)
-                }
+            binding.berita = berita
+
+            itemView.setOnClickListener {
+                onClick?.invoke(berita)
             }
         }
     }
